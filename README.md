@@ -1,15 +1,26 @@
 # Path Planning Research in Gazebo
+
+## 1. Additional Custom Global Planner Plugin
 ---
+### Download Global Planner Plugin
 
-### **0. Install the Gazebo software**
+* [rrtx global planner](https://github.com/kangbeenlee/rrtx_global_planner.git)
+* [ompl global planner](https://github.com/kangbeenlee/ompl_global_planner.git)
 
-Gazebo is a robot simulator. Gazebo simulates multiple robots in a 3D environments, with extensive dynamic interaction between objects.
+### How to use
 
-Gazebo Download Link : [http://gazebosim.org](http://gazebosim.org/)
+* Create your own workspace (description in 2.1).
+* Download above plugin in (your workspace)/src directory.
 
-Download and install gazebo. You can go to the website : http://gazebosim.org/install
+## 2. Installation and Navigation
+---
+### 0. Install the Gazebo software
 
-### **1. Installation**
+* Gazebo is a robot simulator. Gazebo simulates multiple robots in a 3D environments, with extensive dynamic interaction between objects.
+* Gazebo Download Link : [http://gazebosim.org](http://gazebosim.org/)
+* Download and install gazebo. You can go to the website : http://gazebosim.org/install
+
+### 1. Installation
 
 1. **Development Environment ubuntu 20.04 + [ROS Noetic desktop full](http://wiki.ros.org/noetic/Installation/Ubuntu)**
 
@@ -37,7 +48,7 @@ Download and install gazebo. You can go to the website : http://gazebosim.org/in
     catkin_make
     ```
 
-### **2. Simple Test**
+### 2. Simple Test
 
 1. **SCOUT-MINI description**
 
@@ -64,7 +75,7 @@ Download and install gazebo. You can go to the website : http://gazebosim.org/in
     roslaunch scout_teleop scout_teleop_key.launch 
     ```
 
-### **3. 2D Navigation**
+### 3. 2D Navigation
 
 1. **Gmapping SLAM mapping**
     
@@ -80,7 +91,7 @@ Download and install gazebo. You can go to the website : http://gazebosim.org/in
 2. **Navigation**
 
     EKF is applied to sensor fuse encoder and imu for odometry
-    
+
     ```
     # Run navigation
     roslaunch scout_navigation scout_navigation.launch
