@@ -6,8 +6,8 @@
 
   <!-- global planner-->
   <!-- <arg name="base_global_planner" default="navfn/NavfnROS" /> -->
-  <!-- <arg name="base_global_planner" default="rrtx_global_planner/RRTXPlanner" /> -->
-  <arg name="base_global_planner" default="ompl_global_planner/OmplGlobalPlanner" />
+  <arg name="base_global_planner" default="rrtx_global_planner/RRTXPlanner" />
+  <!-- <arg name="base_global_planner" default="ompl_global_planner/OmplGlobalPlanner" /> -->
 
   <!-- local planner-->
   <!-- <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"> -->

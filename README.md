@@ -37,7 +37,7 @@ Download and install gazebo. You can go to the website : http://gazebosim.org/in
     catkin_make
     ```
 
-### **2. Usage**
+### **2. Simple Test**
 
 1. **SCOUT-MINI description**
 
@@ -77,16 +77,10 @@ Download and install gazebo. You can go to the website : http://gazebosim.org/in
     roslaunch scout_slam gmapping_save.launch
     ```
 
-2. **Extended Kalman Filter (EKF) for sensor fused odometry**
+2. **Navigation**
 
-    ```
-    # Open another terminal
-    roslaunch scout_localization ekf_filter.launch
-    ```
-
-
-3. **Navigation**
-
+    EKF is applied to sensor fuse encoder and imu for odometry
+    
     ```
     # Run navigation
     roslaunch scout_navigation scout_navigation.launch

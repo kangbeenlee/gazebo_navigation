@@ -2,8 +2,8 @@
     <arg name="map_file"                  default="map1.yaml" />
     <arg name="open_rviz"                 default="true" />
     
-    <arg name="initial_pose_x"            default="2.0" />
-    <arg name="initial_pose_y"            default="-2.0" />
+    <arg name="initial_pose_x"            default="0.0" />
+    <arg name="initial_pose_y"            default="0.0" />
     <arg name="initial_pose_a"            default="0.0" />
 
     <!-- AMCL parameters -->
@@ -47,12 +47,15 @@
     </include>
 
     <!-- EKF Localization -->
-    <!-- <include file="$(find scout_navigation)/launch/ekf_filter.launch" /> -->
+    <include file="$(find scout_localization)/launch/ekf_filter.launch" />
 
     <!-- rviz -->
     <group if="$(arg open_rviz)">
         <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find scout_navigation)/rviz/scout_navigation_rrtx.rviz" />
     </group>
+    <!-- <group if="$(arg open_rviz)">
+        <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find scout_navigation)/rviz/scout_navigation.rviz" />
+    </group> -->
     <group unless="$(arg open_rviz)">
         <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find scout_navigation)/rviz/scout_navigation_ompl.rviz" />
     </group>
