@@ -1,7 +1,7 @@
 # Path Planning Research in Gazebo
 
 ## 1. Additional Custom Global Planner Plugin
----
+
 ### Download Global Planner Plugin
 
 * [rrtx global planner](https://github.com/kangbeenlee/rrtx_global_planner.git)
@@ -13,7 +13,7 @@
 * Download above plugin in (your workspace)/src directory.
 
 ## 2. Installation and Navigation
----
+
 ### 0. Install the Gazebo software
 
 * Gazebo is a robot simulator. Gazebo simulates multiple robots in a 3D environments, with extensive dynamic interaction between objects.
