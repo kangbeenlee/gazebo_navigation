@@ -1,4 +1,4 @@
-# Path Planning Research in Gazebo
+# ROS Navigation stack in Gazebo with Agilex Scout Mini
 
 ## 1. Additional Custom Global Planner Plugin
 
