@@ -7,7 +7,6 @@ Panels:
         - /TF1/Frames1
         - /TF1/Tree1
         - /Global Map1/Costmap1
-        - /Global Map1/Planner1
         - /Local Map1/Polygon1
         - /Local Map1/Costmap1
         - /Odometry1/Shape1
@@ -335,7 +334,7 @@ Visualization Manager:
           Buffer Length: 1
           Class: rviz/Path
           Color: 255; 0; 0
-          Enabled: true
+          Enabled: false
           Head Diameter: 0.30000001192092896
           Head Length: 0.20000000298023224
           Length: 0.30000001192092896
@@ -352,9 +351,9 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /move_base/DWAPlannerROS/global_plan
+          Topic: /move_base/TebLocalPlannerROS/global_plan
           Unreliable: false
-          Value: true
+          Value: false
       Enabled: true
       Name: Global Map
     - Class: rviz/Group
@@ -399,7 +398,7 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /move_base/DWAPlannerROS/local_plan
+          Topic: /move_base/TebLocalPlannerROS/local_plan
           Unreliable: false
           Value: true
       Enabled: true
@@ -512,7 +511,7 @@ Visualization Manager:
       Marker Topic: /move_base/OmplGlobalPlanner/graph
       Name: Graph
       Namespaces:
-        {}
+        "": true
       Queue Size: 100
       Value: true
   Enabled: true
@@ -538,7 +537,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -1.4957972764968872
+      Angle: -1.5607972145080566
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -548,7 +547,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 39.737205505371094
+      Scale: 34.46519088745117
       Target Frame: <Fixed Frame>
       X: -0.5870410203933716
       Y: -1.1308374404907227
