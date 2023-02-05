@@ -1,6 +1,7 @@
 <launch>
     <arg name="map_file"                  default="map1.yaml" />
     <arg name="open_rviz"                 default="true" />
+    <arg name="rviz_option"               default="default" />
     
     <arg name="initial_pose_x"            default="0.0" />
     <arg name="initial_pose_y"            default="0.0" />
@@ -19,7 +20,7 @@
 
     <!-- move_base parameters -->
     <arg name="move_forward_only"         default="true" />
-    <!-- <arg name="odom_topic"                default="odom_cmd" /> -->
+    <arg name="base_global_planner"       default="navfn/NavfnROS" />
     <arg name="odom_topic"                default="odometry/filtered" />
     
     <!-- Map server -->
@@ -27,7 +28,7 @@
 
     <!-- AMCL -->
     <include file="$(find scout_navigation)/launch/amcl.launch" >
-        <arg name="scan_topic" value="$(arg scan_topic)" />
+        <arg name="scan_topic"                value="$(arg scan_topic)" />
         <arg name="initial_pose_x"            value="$(arg initial_pose_x)" />
         <arg name="initial_pose_y"            value="$(arg initial_pose_y)" />
         <arg name="initial_pose_a"            value="$(arg initial_pose_a)" />
@@ -42,21 +43,16 @@
 
     <!-- move_base -->
     <include file="$(find scout_navigation)/launch/move_base.launch" >
-        <arg name="move_forward_only" value="$(arg move_forward_only)" />
-        <arg name="odom_topic" value="$(arg odom_topic)" />
+        <arg name="move_forward_only"         value="$(arg move_forward_only)" />
+        <arg name="odom_topic"                value="$(arg odom_topic)" />
+        <arg name="base_global_planner"       value="$(arg base_global_planner)" />
     </include>
 
     <!-- EKF Localization -->
     <include file="$(find scout_localization)/launch/ekf_filter.launch" />
 
-    <!-- rviz -->
     <group if="$(arg open_rviz)">
-        <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find scout_navigation)/rviz/scout_navigation_rrtx.rviz" />
+        <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find scout_navigation)/rviz/scout_navigation_$(arg rviz_option).rviz" />
     </group>
-    <!-- <group if="$(arg open_rviz)">
-        <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find scout_navigation)/rviz/scout_navigation.rviz" />
-    </group> -->
-    <group unless="$(arg open_rviz)">
-        <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find scout_navigation)/rviz/scout_navigation_ompl.rviz" />
-    </group>
+
 </launch>
