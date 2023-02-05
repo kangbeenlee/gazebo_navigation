@@ -27,21 +27,24 @@
 2. **Build ROS packages for Scout simulator**
     
     Create worksapce, download ROS packages
+
     ```
     mkdir -p ~/scout_ws/src
     cd ~/scout_ws/src
-    git clone https://github.com/kangbeenlee/gazebo-navigation.git
+    git clone https://github.com/kangbeenlee/gazebo_navigation.git
     ```
 
 3.  **Install required ROS packages**
     
     Noetic (ROS version)
+
     ```
     cd gazebo-navigation
     sh install_dependencies_noetic.sh
     ```
 
 4. **Install dependencies and build**
+
     ```
     cd ~/scout_ws
     rosdep install --from-paths src --ignore-src -r -y
@@ -60,20 +63,21 @@
 
 2. **Launch gazebo simulator and teleop control**
     
-    a. Launch gazebo simulator
-    ```
-    cd ~/scout_ws
-    source devel/setup.bash
-    roslaunch scout_gazebo_sim scout_mini_playpen.launch
-    ```
+    1. Launch gazebo simulator
 
-    b. Run teleop controller (w, a, s, d)
+        ```
+        cd ~/scout_ws
+        source devel/setup.bash
+        roslaunch scout_gazebo_sim scout_mini_playpen.launch
+        ```
+
+    2. Run teleop controller (w, a, s, d)
         
-    ```
-    # Open another terminal
-    cd ~/scout_ws
-    roslaunch scout_teleop scout_teleop_key.launch 
-    ```
+        ```
+        # Open another terminal
+        cd ~/scout_ws
+        roslaunch scout_teleop scout_teleop_key.launch 
+        ```
 
 ### 3. 2D Navigation
 
@@ -83,6 +87,7 @@
     # Run gmapping slam
     roslaunch scout_slam scout_slam.launch
     ```
+
     ```
     # Save map (in another terminal)
     roslaunch scout_slam gmapping_save.launch
@@ -90,9 +95,22 @@
 
 2. **Navigation**
 
-    EKF is applied to sensor fuse encoder and imu for odometry
+    * EKF is applied to sensor fuse encoder and imu for odometry
+    
+    1. **Run navigation with default global planner**
 
-    ```
-    # Run navigation
-    roslaunch scout_navigation scout_navigation.launch
-    ```
+        ```
+        roslaunch scout_navigation scout_navigation.launch
+        ```
+
+    2. **Run navigation with rrtx global planner**
+
+        ```
+        roslaunch scout_navigation scout_navigation.launch base_global_planner:=rrtx_global_planner/RRTXPlanner rviz_option:=rrtx
+        ```
+    
+    3. **Run navigation with ompl global planner**
+
+        ```
+        roslaunch scout_navigation scout_navigation.launch base_global_planner:=ompl_global_planner/OmplGlobalPlanner rviz_option:=ompl
+        ```
