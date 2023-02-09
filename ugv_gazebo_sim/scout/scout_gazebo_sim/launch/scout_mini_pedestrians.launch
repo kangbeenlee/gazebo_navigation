@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- spawn robot parameter (initial position) -->
+  <arg name="x" default="0.0" />
+  <arg name="y" default="0.0" />
+  <arg name="z" default="0.0" />
+  <arg name="yaw" default="0.0" />
+  <arg name="robot_namespace" default="/" />
+
+  <!-- rivz parameters-->
+  <arg name="open_rviz" default="false" />
+
+  <!-- gazebo world parameters-->
+  <arg name="world_name" default="$(find scout_gazebo_sim)/worlds/test_model_1.world" />
+
+  <!-- gazebo world parameters -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_name)" />
+    <arg name="paused" value="false" />
+    <arg name="use_sim_time" value="true" />
+    <arg name="gui" value="true" />
+    <arg name="headless" value="false" />
+    <arg name="debug" value="false" />
+    <arg name="verbose" value="true" />
+  </include>
+
+  <!-- scout_mini model spawn -->
+  <include file="$(find scout_gazebo_sim)/launch/spawn_scout_mini.launch">
+    <arg name="robot_namespace" value="$(arg robot_namespace)" />
+    <arg name="x" value="$(arg x)" />
+    <arg name="y" value="$(arg y)" />
+    <arg name="z" value="$(arg z)" />
+    <arg name="yaw" value="$(arg yaw)" />
+  </include>
+
+  <!-- this node spawn pedsim actors to gazebo once, then the plugin updates their pose -->
+  <node pkg="pedsim_gazebo_plugin" type="spawn_pedsim_agents.py" name="spawn_pedsim_agents"
+    output="screen">
+  </node>
+
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find
+  scout_description)/rviz/model_display.rviz" /> -->
+  <group if="$(arg open_rviz)">
+    <node name="rviz" pkg="rviz" type="rviz"
+      args="-d $(find scout_description)/rviz/navigation.rviz" />
+  </group>
+</launch>
