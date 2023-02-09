@@ -82,7 +82,16 @@
 ### 3. 2D Navigation
 
 1. **Gmapping SLAM mapping**
-    
+    ```
+    # Run gazebo simulator
+    roslaunch scout_gazebo_sim scout_mini_playpen.launch
+    ```
+
+    ```
+    # Run ekf_filter.launch to make odom frame
+    roslaunch scout_localization ekf_filter.launch
+    ```
+
     ```
     # Run gmapping slam
     roslaunch scout_slam scout_slam.launch
